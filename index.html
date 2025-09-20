@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⚡ Dapz Ban Generator ⚡</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #05010b, #000);
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeSlide 1.2s ease-out;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #00f7ff;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #00f7ff;
+    }
+
+    p.subtitle {
+      font-size: 0.95rem;
+      color: #9effff;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 0 5px #0ff;
+    }
+
+    .form-container {
+      background: rgba(0, 0, 20, 0.5);
+      border-radius: 15px;
+      padding: 25px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,255,255,0.15);
+      animation: fadeSlide 1.6s ease-out;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #e1faff;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-bottom: 15px;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      border-bottom: 2px solid #00ffc3;
+      font-size: 0.95rem;
+    }
+
+    input::placeholder {
+      color: #bbb;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00d2ff, #3a47d5);
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 0 12px #00f7ff;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+    }
+
+    .output-box {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      border: 1px solid #00ffc3;
+      color: white;
+      font-family: monospace;
+      white-space: pre-wrap;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .copied {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 0.8rem;
+      color: #00ffcc;
+      animation: fadeOut 1.5s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>⚡ Vortex Ban Generator ⚡</h1>
+  <p class="subtitle">🚀 Isi nomor/type/method untuk generate teks banned WhatsApp</p>
+
+  <div class="form-container">
+    <label for="nomor">Nomor WhatsApp:</label>
+    <input type="text" id="nomor" placeholder="contoh: 62xxx" />
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" placeholder="contoh: judi, porn, pembunuhan, narkoba" />
+
+    <label for="link">Method:</label>
+    <input type="text" id="method" placeholder="contoh: method v1" />
+    
+    NOTE: METHOD HANYA V1 LEBIH? ERROR! DAN JUGA INI BAND MELEWATI SUPPORT WHATSAPP YAH BUKAN PAKE WA FC OKEH? ADA SIH YANG METODE FAKE CHAT TAPI YANG BAGIAN JUDI LY GENERATE 2X YAA MUNCUL TUH METHOD V2 NYA WKWK METHODE WA FC YEKAN
+    METHOD GAK WORK? LAPOR ADMIN
+    @VerseNotDev
+
+    <button onclick="generate()">Generate</button>
+
+    <div class="output-box" id="output" onclick="copyText()">Isi Tolol</div>
+  </div>
+
+  <script>
+    const texts = {
+      judi: [
+        "Здравствуйте, меня зовут Джими, я из России. Я хочу сообщить о незаконной деятельности, а именно об азартных играх онлайн, по следующему номеру. ! 62XXX",
+        "ЗДРАВСТВУЙ, БРАТ, НУЖНЫ ДЕНЬГИ? ХОЧУ ПРЕДЛОЖИТЬ ТЕБЕ ИГРОВОЙ САЙТ Хороший 100% ДОХОДОМ. 😋 Не пропустите этот сайт, не пропустите 🤤 👉https://bebasinka.me/wak5000👈",
+],
+      porn: [
+        "こんにちは。私は日本から来ました。このWA番号で性的虐待事件があったことを報告したいと思います。62XXX 早急にご対応くださいますよう、よろしくお願いいたします。 .",
+      ],
+      pembunuhan: [
+        "Hi Mark, long time no see, I am the one who will kill you later, haha, if you want to be safe, then give a ransom of 1 trillion to the following WhatsApp number! 62XXX",
+      ],
+      narkoba: [
+        "Γεια σου Μαρκ, βρήκα τον αριθμό τηλεφώνου ενός εμπόρου ναρκωτικών, ο αριθμός τηλεφώνου του είναι ο εξής. 62XXX Σε παρακαλώ σταμάτα αυτό τον Μαρκ πριν ο έμπορος ναρκωτικών πουλήσει κι άλλα ναρκωτικά",
+      ]
+    };
+
+    const typeIndex = {
+      judi: 0,
+      porn: 0,
+      pembunuhan: 0,
+      narkoba: 0
+    };
+
+    let lastGeneratedMessage = '';
+
+    function generate() {
+      const type = document.getElementById('type').value.trim().toLowerCase();
+      const output = document.getElementById('output');
+
+      if (!type || !texts[type]) {
+        output.textContent = "Semua Kolom Wajib Di Isi!!!.";
+        lastGeneratedMessage = '';
+        return;
+      }
+
+      const index = typeIndex[type] % texts[type].length;
+      const pesan = texts[type][index];
+      typeIndex[type]++;
+      lastGeneratedMessage = pesan;
+      output.textContent = pesan;
+    }
+
+    function copyText() {
+      if (!lastGeneratedMessage) return;
+
+      navigator.clipboard.writeText(lastGeneratedMessage).then(() => {
+        const output = document.getElementById('output');
+        const notif = document.createElement('div');
+        notif.className = 'copied';
+        notif.textContent = 'Disalin!';
+        output.appendChild(notif);
+
+        setTimeout(() => {
+          notif.remove();
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
